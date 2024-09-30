@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplo 3.2</title>
+   <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+    <h1>Programa Cálculo do Peso Ideal</h1>
+    
+    <img src="img/pe-balanca.jpg" alt="balança">
+    
+    <p>
+        Nome:
+        <input type="text" id="inNome">
+    </p>
+    <p>
+        Sexo:
+        <input type="radio"  id="rbMasculino" name="sexo" value="Masculino" >
+        Masculino
+        <input type="radio" id="rbFeminino" name="sexo" value="Feminino">
+        Feminino
+    </p>
+    <p>
+        Altura: 
+        <input type="text" id="inAltura">
+    </p>
+    <p>
+        <input type="button" id="btCalcularPeso" value="Calcular peso ideal">
+        <input type="button" id="btLimparCampos" value="Limpar Campos">
+    </p>
+    
+    <h3 id="outResposta"></h3>
+    <script src="js/ex3_2.js""></script>
+</body>
+</html>
