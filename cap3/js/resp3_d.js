@@ -1,32 +1,32 @@
-function verificarLadosTriangulo() {
-  var inLadoA = document.getElementById("inLadoA");
-  var inLadoB = document.getElementById("inLadoB");
-  var inLadoC = document.getElementById("inLadoC");
-  var outLadosTriangulo = document.getElementById("outLadosTriangulo");
-  var outTipoTriangulo = document.getElementById("outTipoTriangulo");
+function verificarLados(){
+//referencias
+var inLadoA = document.getElementById("inLadoA");
+var inladoB = document.getElementById("inLadoB");
+var inladoC = document.getElementById("inLadoC");
+var outValidacaoTriangulo = document.getElementById("outValidacaoTriangulo");
+var outTipoTriangulo = document.getElementById("outTipoTriangulo");
 
-  var ladoA = inLadoA.value;
-  var ladoB = inLadoB.value;
-  var ladoC = inLadoC.value;
+//valores de entrada 
+ var ladoA = Number(inLadoA.value);
+ var ladoB = Number(inladoB.value);
+ var ladoC = Number(inladoC.value);
 
-  if (ladoA + ladoB < ladoC || ladoB + ladoC < ladoA || ladoC + ladoA < ladoB) {
-    outLadosTriangulo.textContent = "Lados podem Formar um triângulo";
-  }
+ //dois lados somados não podem ser maior que o terceio (a+b<c)
 
-  if (ladoA == ladoB && ladoB == ladoC && ladoC == ladoA) {
-    outTipoTriangulo.textContent = "Isóceles.";
-  }
-  if (ladoA != ladoB && ladoB != ladoC && ladoC != ladoA) {
-    outTipoTriangulo.textContent = "Escaleno.";
-  }
+ if(ladoC <= ladoA + ladoB && ladoB <= ladoA + ladoC && ladoA <= ladoB + ladoC ){
 
-  if (
-    (ladoA == ladoB) != ladoC ||
-    (ladoA == ladoC) != ladoA ||
-    (ladoB == ladoC) != ladoA
-  ) {
-    outTipoTriangulo.textContent = "Equilátero";
-  }
-  var btVerificarLados = document.getElementById("btVerificarLados");
-  btVerificarLados.addEventListener("click", verificarLadosTriangulo);
+
+  outValidacaoTriangulo.textContent = "Lados podem formar um triângulo";
+
+}else{
+  outValidacaoTriangulo.textContent = "Lados não podem formar um Triângulo";
 }
+ 
+
+
+ 
+
+
+}
+var btVerificarLados = document.getElementById("btVerificarLados");
+btVerificarLados.addEventListener("click",verificarLados);
