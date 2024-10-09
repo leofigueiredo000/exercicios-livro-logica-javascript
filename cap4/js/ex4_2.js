@@ -12,11 +12,14 @@ function decrescerNumeros() {
 
   var resposta = "Entre " + numero + " e 1: ";
 
-  for (var i = numero; i > 0; i = i = i - 1) {
+  for (var i = numero; i > 1; i--) {
     resposta = resposta + i + ", ";
+    outNumeros.textContent = resposta;
   }
-
+  resposta = resposta + i + ". ";
   outNumeros.textContent = resposta;
+  
 }
+
 var btDecrescer = document.getElementById("btDecrescer");
 btDecrescer.addEventListener("click", decrescerNumeros);
