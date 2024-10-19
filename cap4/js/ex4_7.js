@@ -3,7 +3,7 @@ function preencherEstrelas() {
   var outResposta = document.getElementById("outResposta");
 
   var num = Number(inNumero.value);
-  var estrelas = "";
+  var estrela = "";
   if (num == 0 || isNaN(num)) {
     alert("Digite um Numero valido");
     inNumero.focus();
