@@ -10,6 +10,17 @@ function PreverChinchilas() {
   var previsaoChinchilas = 0;
   var triplice = numeroChinchilas;
 
+  if (
+    numeroChinchilas < 2 ||
+    numeroAnos == 0 ||
+    isNaN(numeroChinchilas) ||
+    isNaN(numeroAnos)
+  ) {
+    alert("Digite os dados corretamente.");
+    inNumeroChinchilas.focus();
+    return;
+  }
+
   for (var i = 1; i <= numeroAnos; i++) {
     if (i == 1) {
       previsaoChinchilas = i + "º ano: " + numeroChinchilas + " Chinchilas \n";
