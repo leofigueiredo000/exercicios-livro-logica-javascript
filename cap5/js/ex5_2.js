@@ -17,7 +17,7 @@ function descobrirNumero() {
 
   if (numero == sorteado) {
     alert("Parabéns!! Você ganhou!");
-    btApostar.ariaDisabled = true;
+    btApostar.disabled = true;
     btjogar.className = "exibe";
     outDica.textContent = "Parabéns!! Número sorteado: " + sorteado;
   } else {
@@ -46,3 +46,11 @@ function descobrirNumero() {
 }
 var btApostar = document.getElementById("btApostar");
 btApostar.addEventListener("click", descobrirNumero);
+
+function jogarNovamente()
+{
+  location.reload();
+
+}
+var btJogar = document.getElementById("btJogar");
+btJogar.addEventListener("click",jogarNovamente);
