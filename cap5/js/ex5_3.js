@@ -3,16 +3,15 @@ function adicionarCarros() {
   //referencia aos elementos
   var inModelo = document.getElementById("inModelo");
   var inPreco = document.getElementById("inPreco");
-  var outLista = document.getElementById("outLista");
 
   var modelo = inModelo.value;
   var preco = Number(inPreco.value);
 
-  if (modelo == "" || preco == 0 || isNaN(preco))
+  if (modelo == "" || preco == 0 || isNaN(preco)) {
     alert("preencha os dados corretamente...");
-  inModelo.focus();
-  return;
-
+    inModelo.focus();
+    return;
+  }
   carros.push({ modelo: modelo, preco: preco });
 
   inModelo.value = "";
@@ -31,11 +30,41 @@ function listarCarros() {
     alert("sem carros na lista");
     inModelo.focus();
   }
-  for (var i = 0; i <= carros.length; i++) {
-    lista += carros[i].modelo + "- R$: " + carros[i].preco.toFixed(2) + "\n";
-
-    document.getElementById("outLista").textContent = lista;
+  for (var i = 0; i < carros.length; i++) {
+    lista += carros[i].modelo + " - R$: " + carros[i].preco.toFixed(2) + "\n";
   }
+  document.getElementById("outLista").textContent = lista;
 }
 var btListar = document.getElementById("btListar");
 btListar.addEventListener("click", listarCarros);
+
+function filtrarCarros() {
+  var maximo = Number(
+    prompt("Qual o valor maximo que o cliente deseja pagar?")
+  );
+
+  if (maximo == 0 || isNaN(maximo)) {
+    return;
+  }
+  var lista = "";
+
+  for (var i = 0; i < carros.length; i++) {
+    if (carros[i].preco <= maximo) {
+      lista += carros[i].modelo + " R$- " + carros[i].preco.toFixed(2) + "\n";
+    }
+  }
+  var outLista = document.getElementById("outLista");
+
+  if (lista == "") {
+    outLista.textContent =
+      "não há carros com preço até R$ " + maximo.toFixed(2);
+  } else {
+    outLista.textContent =
+      "carros até R$ " +
+      maximo.toFixed(2) +
+      "\n------------------------\n" +
+      lista;
+  }
+  var btFiltrar = document.getElementById("btFiltrar");
+  btFiltrar.addEventListener("click,", filtrarCarros);
+}
