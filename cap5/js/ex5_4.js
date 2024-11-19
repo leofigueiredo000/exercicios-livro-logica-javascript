@@ -22,7 +22,7 @@ function adcionarCrianca() {
   inIdadeCrianca.value = "";
   inNomeCrianca.focus();
 
-listarCrianca();
+  listarCrianca();
 }
 //referencia ao botão adicionar
 var btAdicionar = document.getElementById("btAdicionar");
@@ -30,22 +30,60 @@ var btAdicionar = document.getElementById("btAdicionar");
 btAdicionar.addEventListener("click", adcionarCrianca);
 
 function listarCrianca() {
-  if (criancas.length == 0 ){
-
+  if (criancas.length == 0) {
     alert("Não há crianças na lista");
     return;
   }
-  
-  
-    var lista = "";
 
-   
+  var lista = "";
+
   for (i = 0; i < criancas.length; i++) {
-
-  lista += criancas[i].nomeCrianca + " - "+criancas[i].idadeCrianca + "\n";
-}
- document.getElementById("outLista").textContent = lista;
-  
+    lista += criancas[i].nomeCrianca + " - " + criancas[i].idadeCrianca + "\n";
+  }
+  document.getElementById("outLista").textContent = lista;
 }
 var btListar = document.getElementById("btListar");
-btListar = btListar.addEventListener("click",listarCrianca);
+btListar = btListar.addEventListener("click", listarCrianca);
+
+function resumirLista() {
+  if (criancas.length == 0) {
+    alert("Não há crianças na lista.");
+    return;
+  }
+
+  var copia = criancas.slice();
+
+  copia.sort(function (a, b) {
+    return a.idadeCrianca - b.idadeCrianca;
+  });
+
+  var resumo = "";
+
+  var aux = copia[0].idade;
+  var nomes = [];
+
+  for (i = 0; i < criancas.length; i++) {
+    if (copia[i].idade == aux) {
+      nomes.push(copia[i].nome);
+    } else {
+resumo += aux + "ano(s):" + nomes.length + " criança(s) - ";
+resumo += (nomes.length / copia.length *100).toFixed(2) + "%\n";
+resumo += "(" + nomes.join(",") + ")\n\n";
+aux = copia[i].idade; // obtém a nova idade na ordem
+nomes = []; // limpa o vetor dos nomes
+nomes.push(copia[i].nome); // adiciona o primeiro da nova idade
+    }
+  }
+  // adiciona os nomes da última idade ordenada
+resumo += aux + " ano(s): " + nomes.length + " criança(s) - ";
+resumo += (nomes.length / copia.length * 100).toFixed(2) + "%\n";
+resumo += "(" + nomes.join(", ") + ")\n\n";
+
+
+document.getElementById("outLista").textContent = resumo;
+
+    
+  
+}
+var btResumir = document.getElementById("btResumir");
+btResumir.addEventListener("click", resumirLista);
