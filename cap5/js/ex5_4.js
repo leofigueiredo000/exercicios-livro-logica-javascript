@@ -53,25 +53,24 @@ function resumirLista() {
 
   var copia = criancas.slice();
 
-  copia.sort(function (a, b) {
-    return a.idadeCrianca - b.idadeCrianca;
-  });
+  
+    copia.sort(function (a, b) { return a.idadeCrianca - b.idadeCrianca });
 
   var resumo = "";
 
-  var aux = copia[0].idade;
+  var aux = copia[0].idadeCrianca;
   var nomes = [];
 
-  for (i = 0; i < criancas.length; i++) {
-    if (copia[i].idade == aux) {
-      nomes.push(copia[i].nome);
+  for ( var i = 0; i < copia.length; i++) {
+    if (copia[i].idadeCrianca == aux) {
+      nomes.push(copia[i].nomeCrianca);
     } else {
 resumo += aux + "ano(s):" + nomes.length + " criança(s) - ";
 resumo += (nomes.length / copia.length *100).toFixed(2) + "%\n";
-resumo += "(" + nomes.join(",") + ")\n\n";
-aux = copia[i].idade; // obtém a nova idade na ordem
+resumo += "(" + nomes.join(", ") + ")\n\n";
+aux = copia[i].idadeCrianca; // obtém a nova idade na ordem
 nomes = []; // limpa o vetor dos nomes
-nomes.push(copia[i].nome); // adiciona o primeiro da nova idade
+nomes.push(copia[i].nomeCrianca); // adiciona o primeiro da nova idade
     }
   }
   // adiciona os nomes da última idade ordenada
