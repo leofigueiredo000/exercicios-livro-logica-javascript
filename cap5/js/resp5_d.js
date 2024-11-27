@@ -3,9 +3,15 @@ var noticias = [];
 function adicionarNoticias() {
   //referencia
   var inNoticia = document.getElementById("inNoticia");
-
+var outCadastradas = document.getElementById("outCadastradas");
   //declaração de variaveis
   var noticia = inNoticia.value;
+  var noticiasRegistradas = noticias.length;
+  
+  //trecho de codigo adicionando e formatando noticias cadastradas 
+  outCadastradas.textContent = "Noticias cadastradas: "+ noticiasRegistradas;
+ outCadastradas.classList.add("fonteAzul","italico");
+ 
 
   //condicional caso não digite nenhum valor
   if (noticia == "") {
@@ -15,6 +21,9 @@ function adicionarNoticias() {
   }
 
   noticias.push(noticia);
+  
+  
+  noticiasRegistradas = noticias.length;
 
   listarNoticia();
 }
