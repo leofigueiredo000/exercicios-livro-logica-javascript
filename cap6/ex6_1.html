@@ -1,0 +1,15 @@
+<script>
+  var anuncio = prompt("Anuncio");
+
+  var tam = anuncio.length;
+
+  var numeroPalavras = 0;
+
+  for (var i = 0; i < tam; i++) {
+    if (anuncio.charAt(i) == " ") {
+      numeroPalavras++;
+    }
+  }
+
+  alert("Anuncio: " + anuncio + " nº de palavras " + (numeroPalavras + 1));
+</script>
